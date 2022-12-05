@@ -153,85 +153,7 @@ namespace CapturaCalificaciones
             #endregion
 
             #region CON OLEDB
-            /*
-            OleDbConnection con = null;
-            try
-            {
-                //string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strRutaArchivo + ";Extended Properties=Excel 8.0;";
-                //NO JALA -- string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strRutaArchivo + ";";
-                //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + strRutaArchivo + ";Persist Security Info=False;";
-                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + strRutaArchivo + ";Extended Properties=Excel 12.0 Xml;";
-                //string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strRutaArchivo + ";Extended Properties=Excel 12.0;";
-                con = new OleDbConnection(connectionString);
-                con.Open();
-                DataTable tablas = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-                con.Close();
-                int noHojas = 0;
-                string strNomHoja = "";
-                foreach (DataRow row in tablas.Rows)
-                {
-                    strNomHoja = row[2].ToString().Trim();
-                    string strSub = strNomHoja.Substring(strNomHoja.Length - 1, 1);
-                    if (string.Compare(strSub, "_") != 0)
-                    {
-                        this.cmbHojas.Items.Add(strNomHoja);
-                    }
-                }
-
-                if (noHojas > 0)
-                {
-                    this.cmbHojas.Text = "";
-                    this.cmbHojas.SelectedIndex = 0;
-                }
-            }
-
-            catch (Exception error)
-            {
-                MessageBox.Show("Se produjo un error.\n" + error.Message, "Captura de Calificaciones CONECBU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (con != null)
-                    if (con.State == ConnectionState.Open)
-                        con.Close();
-            }
-
-            //---------------------------------------------------------
-            //*** LEER NOMBRE DE COLUMNAS DE UNA HOJA DEL DEL DOC DE EXCEL ************************************************************
-            //---------------------------------------------------------
-
-            //try
-            //{
-
-            //   DataTable columns;
-
-            //   string[] restrictions = { null, null, this.txtTabla.Text, null };
-
-            //   DbConnection connection = factory.CreateConnection();
-
-            //   //string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strRutaArchivo + ";Extended Properties=Excel 8.0;";
-
-            //   string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
-            //      @"Data Source=" + strRutaArchivo + ";" +
-            //      @"Extended Properties=" + '"' + "Excel 8.0;HDR=YES" + '"';
-
-            //   connection.ConnectionString = connectionString;
-
-            //   connection.Open();
-
-            //   columns = connection.GetSchema("Columns", restrictions);
-
-            //   this.dataGridView1.DataSource = columns;
-
-            //}
-
-            //catch (Exception)
-            //{
-
-            //   MessageBox.Show("Se produjo un error. Puede ser que la hoja de calculo a abrir no exista o posea un esquema diferente.");
-
-            //}
-             * */
+            
             #endregion
         }
         private void PIniciarCapturaDeCalificacionesEnParcial()
@@ -450,7 +372,7 @@ namespace CapturaCalificaciones
             Excel.Range range;
 
             cantColumnas = 0;
-            int resultado = 0;
+            int res = 0;
 
             try
             {
@@ -469,7 +391,7 @@ namespace CapturaCalificaciones
 
                 range = xlWorkSheet.UsedRange;
 
-                resultado = (range.Rows.Count - 1) * range.Columns.Count; //resto una fila, por la fila del texto de las columnas
+                res = (range.Rows.Count - 1) * range.Columns.Count; //resto una fila, por la fila del texto de las columnas
                 cantColumnas = range.Columns.Count;
 
                 xlWorkBook.Close(true, null, null);
