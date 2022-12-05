@@ -293,23 +293,7 @@ namespace CapturaCalificaciones
                                 }
                             }
 
-                            //==========================================================
-                            //              VERSION ANTERIOR 1.0
-                            //==========================================================
-                            //for (int i = 1; i <= cantCajas; i++)
-                            //{
-                            //    HtmlElement caja = webBrowser1.Document.Window.Frames[1].Document.Window.Frames[0].Document.GetElementById("Caja" + i);
-                            //    if (caja != null)
-                            //    {
-                            //        strCalif = PGetCalificacion(i);
-                            //        caja.SetAttribute("value", strCalif);
-                            //    }
-                            //    else
-                            //    {//no encontró la caja
-                            //        MessageBox.Show("Verifique que este en la página web de captura de calificaciones adecuada. Error: no encontró la Caja" + i + ".", "Captura de Calificaciones CONECBU", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            //        return;
-                            //    }
-                            //}
+                            
                         }
                         else
                         {
